@@ -108,7 +108,7 @@ widget = do
       dynGameState :: Dynamic t GameState <- holdDyn initialGameState evStateChange
       -- `evTookTurn` is an event that occurs each time a player has taken a
       -- turn, carrying the new GameState. This is different from `evCellClick`
-      -- because the player may have clicked a cell that is already full, in
+      -- because the player may have clicked a cell that is already full, in which
       -- case he has not taken a turn.
       let evTookTurn = attachWithMaybe (flip handleCellClick) (current dynGameState) evCellClick
       -- `evJumpTo` is similar to `evGoToClicked`, but it carries the new `GameState`
