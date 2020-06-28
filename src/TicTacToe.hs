@@ -1,3 +1,5 @@
+{-# LANGUAGE TemplateHaskell #-}
+
 -- This is a demo on how to make a TicTacToe game without any callbacks, listeners
 -- or mutable state. The programming technique we use here is called "Functional
 -- Reactive Programming". You can think of it as a spreadsheet on steroids: we define
@@ -12,8 +14,6 @@
 --
 -- This TicTacToe application is functionally the same as https://codepen.io/gaearon/pen/gWWZgR.
 -- I recommand trying it out to understand the code better.
-
-{-# LANGUAGE TemplateHaskell #-}
 
 module TicTacToe
   ( tictactoe,
@@ -66,8 +66,7 @@ initialGameState =
 -- `widget` is a function that renders our page. It also contains our game logic.
 widget :: MonadWidget t m => m ()
 widget = do
-  rec 
-      -- An `Event t a` is a source of occurences. Each time it occurs, it carries
+  rec -- An `Event t a` is a source of occurences. Each time it occurs, it carries
       -- a value of type `a`.
       -- `evCellClick` is an `Event` that occurs each time a cell on the board has
       -- been clicked, carrying the index of the cell that has been clicked.
@@ -84,7 +83,7 @@ widget = do
         -- If there is a winner, we display who it is.
         GameState {winner = Just p} -> "Winner: " <> playerText p
         -- If not, we show whose turn it is based on how many turns have been taken so far.
-        -- See `whoseTurn`, line 177
+        -- See `whoseTurn`, line 179
         GameState {turnsTaken} -> "Next player: " <> (playerText . whoseTurn $ turnsTaken)
       -- `evGoToClicked` is an `Event` that occurs each time one of the "go to" buttons
       -- has been clicked, carrying the turn number to go to.
