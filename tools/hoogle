@@ -1,0 +1,11 @@
+#/usr/bin/env sh
+
+stack haddock
+
+LOCAL_DOC_ROOT=$(stack path --local-doc-root)
+SNAPSHOT_DOC=$(stack path --snapshot-doc-root)
+DATABASE=$(stack path --local-hoogle-root)/database.foo
+
+stack exec -- hoogle generate --local=$LOCAL_DOC_ROOT --local=$SNAPSHOT_DOC --database=$DATABASE
+
+hoogle server --local --port=9876 --database=$DATABASE
