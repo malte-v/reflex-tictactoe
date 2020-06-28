@@ -83,7 +83,7 @@ widget = do
         -- If there is a winner, we display who it is.
         GameState {winner = Just p} -> "Winner: " <> playerText p
         -- If not, we show whose turn it is based on how many turns have been taken so far.
-        -- See `whoseTurn`, line 179
+        -- See `whoseTurn`, line 176
         GameState {turnsTaken} -> "Next player: " <> (playerText . whoseTurn $ turnsTaken)
       -- `evGoToClicked` is an `Event` that occurs each time one of the "go to" buttons
       -- has been clicked, carrying the turn number to go to.
