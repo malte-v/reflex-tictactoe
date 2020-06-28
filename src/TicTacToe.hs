@@ -83,8 +83,8 @@ widget = do
       el "p" $ dynText $ ffor dynGameState \case
         -- If there is a winner, we display who it is.
         GameState {winner = Just p} -> "Winner: " <> playerText p
-        -- If not, we show who's turn it is based on how many turns have been taken so far.
-        -- See `whoseTurn`, line TODO
+        -- If not, we show whose turn it is based on how many turns have been taken so far.
+        -- See `whoseTurn`, line 177
         GameState {turnsTaken} -> "Next player: " <> (playerText . whoseTurn $ turnsTaken)
       -- `evGoToClicked` is an `Event` that occurs each time one of the "go to" buttons
       -- has been clicked, carrying the turn number to go to.
@@ -135,8 +135,8 @@ widget = do
       dynHistory :: Dynamic t [GameState] <-
         scanDyn
           (pure . fst)
-          ( \(state, timeTraveling) (oldHistory) ->
-              if timeTraveling then oldHistory else take (turnsTaken state) oldHistory `snoc` state
+          ( \(state, timeTraveling) history ->
+              if timeTraveling then history else take (turnsTaken state) history `snoc` state
           )
           (zipDyn dynGameState dynTimeTraveling)
   pure ()
