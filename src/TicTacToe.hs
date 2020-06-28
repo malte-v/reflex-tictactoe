@@ -5,7 +5,7 @@
 -- Reactive Programming". You can think of it as a spreadsheet on steroids: we define
 -- how values change based on existing changing values or events.
 --
--- This implementationm relies on `reflex` and `reflex-dom`. The former is a general-
+-- This implementation relies on `reflex` and `reflex-dom`. The former is a general-
 -- purpose FRP framework for Haskell and the latter connects it to the DOM API.
 --
 -- If you want to learn about these libraries, check out https://reflex-frp.org/ and
