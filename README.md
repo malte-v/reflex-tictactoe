@@ -1,6 +1,6 @@
 # TicTacToe in Reflex
 
-See https://github.com/malte-v/reflex-tictactoe/blob/master/src/TictacToe.hs
+See https://github.com/malte-v/reflex-tictactoe/blob/master/src/TicTacToe.hs
 
 ## Building
 
